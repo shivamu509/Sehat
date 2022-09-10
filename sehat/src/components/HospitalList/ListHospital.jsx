@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const ListHospital = (props) => {
   console.log(props);
@@ -23,11 +24,14 @@ const ListHospital = (props) => {
             <div className="card-footer">
               {/* <a href="/" className="col-md-5 col-xs-6 btn"><i className="fa fa-medkit" aria-hidden="true"></i> Make Appointment </a>
                 <a href="Javascipt:void(0)" className="d-none d-md-inline col-md-1 text-decoration-none"> || </a> */}
-              <a href="/" className="col-md-5 col-xs-6 btn text-dark">
+              <NavLink
+                to="/find-hospital/details"
+                className="col-md-5 col-xs-6 btn text-dark"
+              >
                 {" "}
                 <i className="fa fa-external-link" aria-hidden="true"></i> More
                 Details
-              </a>
+              </NavLink>
             </div>
           </div>
         </div>
