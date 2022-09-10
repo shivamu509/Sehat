@@ -3,7 +3,8 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/HomePage/Navbar";
 import HomePage from "./components/HomePage/HomePage";
-import HeroSection from "./components/HospitalList/HeroSection";
+import HospitalDetails from "./components/HospitalDetails/Details";
+import FindHospital from "./components/HospitalList/HeroSection";
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/find-hospital" element={<HeroSection />} />
+        <Route path="/find-hospital" element={<FindHospital />} />
+        <Route path="/find-hospital/details" element={<HospitalDetails />} />
       </Routes>
     </Router>
   );
