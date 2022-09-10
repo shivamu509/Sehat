@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
     const hospitals = await Hospital.find();
     return res.status(200).json({
       message: "All the hospitals are:",
-      products,
+      hospitals,
     });
   } catch (err) {
     return res.status(500).json({
@@ -20,29 +20,43 @@ router.get("/", async (req, res) => {
 
 router.post("/add", async (req, res) => {
   try {
-    const { product_name, product_price, product_image, product_description } =
-      req.body;
-    if (product_name == "" && error == "") {
-      error = "Missing Product Name";
+    const {
+      hospital_name,
+      hospital_image,
+      bed_count,
+      hospital_description,
+      hospital_contact,
+      hospital_address,
+      hospital_pincode,
+      hospital_state,
+      hospital_city,
+    } = req.body;
+    if (hospital_name == "" && error == "") {
+      error = "Missing Hospital Name";
       return res.status(400).json({
         message: error,
       });
     }
-    if (product_price == "" && error == "") {
-      error = "Missing Product Price";
+    if (hospital_image == "" && error == "") {
+      error = "Missing Hospital Image";
       return res.status(400).json({
         message: error,
       });
     }
 
-    const ProductObj = {
-      product_name,
-      product_price,
-      product_description,
-      product_image,
+    const HospitalObj = {
+      hospital_name,
+      hospital_image,
+      bed_count,
+      hospital_description,
+      hospital_contact,
+      hospital_address,
+      hospital_pincode,
+      hospital_state,
+      hospital_city,
     };
-    const product = new Product(ProductObj);
-    await product.save();
+    const hospital = new Hospital(HospitalObj);
+    await hospital.save();
     res.status(200).json({
       message: "Product Added Successfully",
     });
@@ -58,25 +72,39 @@ router.post("/add", async (req, res) => {
 router.put("/update/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const { product_name, product_price, product_image, product_description } =
-      req.body;
-    if (product_name == "" || product_name == undefined) {
-      error = "Missing Product Name";
+    const {
+      hospital_name,
+      hospital_image,
+      bed_count,
+      hospital_description,
+      hospital_contact,
+      hospital_address,
+      hospital_pincode,
+      hospital_state,
+      hospital_city,
+    } = req.body;
+    if (hospital_name == "" || hospital_name == undefined) {
+      error = "Missing Hospital Name";
       return res.status(400).json({
         message: error,
       });
     }
-    if (product_price == "" || product_price == undefined) {
-      error = "Missing Product Price";
+    if (hospital_image == "" || hospital_image == undefined) {
+      error = "Missing Hospital Image";
       return res.status(400).json({
         message: error,
       });
     }
-    await Product.findByIdAndUpdate(id, {
-      product_name,
-      product_price,
-      product_description,
-      product_image,
+    await Hospital.findByIdAndUpdate(id, {
+      hospital_name,
+      hospital_image,
+      bed_count,
+      hospital_description,
+      hospital_contact,
+      hospital_address,
+      hospital_pincode,
+      hospital_state,
+      hospital_city,
     });
     return res.status(200).json({
       message: "Product updated successfully",
@@ -91,7 +119,7 @@ router.put("/update/:id", async (req, res) => {
 
 router.delete("/del/:id", async (req, res) => {
   try {
-    await Product.findByIdAndDelete(req.params.id);
+    await Hospital.findByIdAndDelete(req.params.id);
     return res.status(200).json({
       message: "Product deleted successfully",
     });
@@ -105,10 +133,10 @@ router.delete("/del/:id", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const product = await Product.findOne({ _id: req.params.id });
+    const hospital = await Hospital.findOne({ _id: req.params.id });
     res.status(200).json({
       message: "Product found successfully",
-      product,
+      hospital,
     });
   } catch (err) {
     res.status(500).json({

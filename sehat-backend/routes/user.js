@@ -6,12 +6,12 @@ const router = express.Router();
 
 router.post("/add", async (req, res) => {
   try {
-    let { full_name, email, password } = req.body;
+    let { full_name, email, password, age, gender } = req.body;
 
     const salt = await bcryptjs.genSalt(10);
     password = await bcryptjs.hash(password, salt);
 
-    const user = new User({ full_name, email, password });
+    const user = new User({ full_name, email, password, age, gender });
     await user.save();
     return res.status(200).json({
       message: "User saved successfully",
@@ -37,10 +37,15 @@ router.post("/login", async (req, res) => {
             id: user._id,
           },
         };
-        const token = jwt.sign(payload, "iamaks", { expiresIn: 3600 });
+        const token = jwt.sign(payload, "paradox", { expiresIn: 3600 });
         res.status(200).json({
           message: "User logged in successfully",
-          user: { user_id: user._id, eamil: user.email },
+          user: {
+            user_id: user._id,
+            eamil: user.email,
+            age: user.age,
+            gender: user.gender,
+          },
           token,
         });
       } else {
