@@ -5,6 +5,9 @@ import Navbar from "./components/HomePage/Navbar";
 import HomePage from "./components/HomePage/HomePage";
 import HospitalDetails from "./components/HospitalDetails/Details";
 import FindHospital from "./components/HospitalList/HeroSection";
+import FindDoctor from "./components/FindDoctor";
+import ContactUs from "./components/ContactUs";
+import AboutUs from "./components/AboutUs";
 
 function App() {
   return (
@@ -14,6 +17,9 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/find-hospital" element={<FindHospital />} />
         <Route path="/find-hospital/details" element={<HospitalDetails />} />
+        <Route path="/find-doctor" element={<FindDoctor />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/about" element={<AboutUs />} />
       </Routes>
     </Router>
   );

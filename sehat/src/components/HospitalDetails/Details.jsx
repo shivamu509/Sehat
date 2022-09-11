@@ -6,7 +6,7 @@ const Details = () => {
   const [modalIsOpen, setmodalIsOpen] = useState(false);
 
   return (
-    <div className="pb-4 bg-white">
+    <div className="details-container ">
       <div class="row">
         <div class="col-lg-6" style={{ width: "380px" }}>
           <div class="card ps-2 border-white">
