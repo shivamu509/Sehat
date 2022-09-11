@@ -143,3 +143,18 @@
   background-color: rgba(127, 255, 212, 0.75);
   transform: translateY(2px);
 }
+
+/* Responsive Queries */
+@media (max-width: 715px) {
+  .appointment-form {
+    grid-template-columns: 1fr;
+  }
+
+  .phone-number {
+    width: 100%;
+  }
+
+  .email {
+    width: 100%;
+  }
+}

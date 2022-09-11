@@ -6,6 +6,9 @@ import HomePage from "./components/HomePage/HomePage";
 import HospitalDetails from "./components/HospitalDetails/Details";
 import FindHospital from "./components/HospitalList/HeroSection";
 import AppointmentDetails from "./components/appointmentDetails/AppointmentDetails";
+import FindDoctor from "./components/FindDoctor";
+import ContactUs from "./components/ContactUs";
+import AboutUs from "./components/AboutUs";
 
 function App() {
   return (
@@ -16,6 +19,9 @@ function App() {
         <Route path="/find-hospital" element={<FindHospital />} />
         <Route path="/appointment/details" element={<AppointmentDetails />} />
         <Route path="/find-hospital/details" element={<HospitalDetails />} />
+        <Route path="/find-doctor" element={<FindDoctor />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/about" element={<AboutUs />} />
       </Routes>
     </Router>
   );
